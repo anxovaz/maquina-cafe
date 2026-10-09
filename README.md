@@ -79,7 +79,7 @@ classDiagram
     CofeeMachine *-- Coins : owns
     CofeeMachine o-- Cofee : selected cofee
     CofeeMachineState <|.. Idle
-    CofeeMachineState <|.. CargingMachine
+    CofeeMachineState <|.. ChargingMachine
     CofeeMachineState <|.. MakeCofee
     CofeeMachineState <|.. ServeCofee
     CofeeMachineState <|.. ReturnChange

@@ -16,10 +16,10 @@ object CoffeeMachine {
                 wage = 0.60
             }
             is ChargingMachine -> {
-                if (wage < 0.60){
+                if (wage < 0.60){ //Si el usuario ha metido menos de 60cents
                     println("Saldo insuficiente")
                     currentState = ChargingMachine("Introduzca monedas")
-                }else {
+                }else { //si ha metido más
                     val idleState = currentState as Idle
                     println("Máquina encendida, Empezando a hacer café...")
                     Thread.sleep(2000)
