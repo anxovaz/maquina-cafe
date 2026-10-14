@@ -11,21 +11,20 @@ object CoffeeMachine {
         println("Estado actual: $currentState")
 
         when (currentState) {
+            is Idle if this.wage > 0 -> {
+                println("[LOG] Moneda detectada, saliendo del estado ${this.currentState}")
+                this.currentState = ChargingMachine("Mete monedas");
+            }
             is Idle -> {
-                println("Cargando máquina...")
-                wage = 0.60
+                println("Estoy en espera, Introduce monedas para avanzar")
             }
             is ChargingMachine -> {
-                if (wage < 0.60){ //Si el usuario ha metido menos de 60cents
+                if (this.wage < 0.60){ //Si el usuario ha metido menos de 60cents
                     println("Saldo insuficiente")
-                    currentState = ChargingMachine("Introduzca monedas")
+                    currentState = ChargingMachine("Inserta monedas")
                 }else { //si ha metido más
-                    val idleState = currentState as Idle
-                    println("Máquina encendida, Empezando a hacer café...")
-                    Thread.sleep(2000)
-                    // Simula un proceso de preparación
-                    currentState = ServingCoffee("Nescafé")
-                    println("¡Café listo! Estado: $currentState")
+                    this.wage -= 60
+                    this.currentState = MakingCoffee()
                 }
 
             }
@@ -47,7 +46,10 @@ object CoffeeMachine {
             is CoffeeMachineState.ServingCoffee -> TODO()
         }
     }
-
+    fun chargeMachine(money: Int) {
+        this.wage += money
+        this.makeCoffee()
+    }
     fun clean() {
         println("Limpiando la máquina...")
         currentState = CoffeeMachineState.Idle()
