@@ -92,32 +92,19 @@ classDiagram
 classDiagram
     direction LR
 
-    class CofeeMachine {
-        -selectedCofee: Cofee
-        +selectCofee(cofee: Cofee) void
+    class CoffeeMachine {
+        -selectedCoffee: CoffeeType
+        +selectCoffee(coffeeType: CoffeeType) void
     }
 
-    class Cofee {
-        <<abstract>>
-        -price: Double
-        +getPrice() Double
-        +prepare() void*
-    }
-    class Capuchino {
-        -ingredients: String[]
-        +prepare() void
-    }
-    class Expresso {
-        -ingredients: String[]
-        +prepare() void
-    }
-    class Solo {
-        -ingredients: String[]
-        +prepare() void
+    class CoffeeType {
+        <<enumeration>>
+        EXPRESO
+        CAPUCHINO
+        SOLO
+        +ingredients: String[]
+        +prepaaration: String[]
     }
 
-    CofeeMachine o-- Cofee : selected cofee
-    Cofee <|-- Capuchino
-    Cofee <|-- Expresso
-    Cofee <|-- Solo
+    CoffeeMachine --> CoffeeType : uses
 ```
