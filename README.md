@@ -103,7 +103,7 @@ classDiagram
         CAPUCHINO
         SOLO
         +ingredients: String[]
-        +prepaaration: String[]
+        +preparation: String[]
     }
 
     CoffeeMachine --> CoffeeType : uses
