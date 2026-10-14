@@ -92,9 +92,9 @@ classDiagram
 classDiagram
     direction LR
 
-    class CoffeeMachine {
-        -selectedCoffee: CoffeeType
-        +selectCoffee(coffeeType: CoffeeType) void
+    class CofeeMachine {
+        -selectedCofee: Cofee
+        +selectCofee(cofee: Cofee) void
     }
 
     class CoffeeType {
@@ -103,8 +103,11 @@ classDiagram
         CAPUCHINO
         SOLO
         +ingredients: String[]
-        +prepaaration: String[]
+        +preparation: String[]
     }
 
-    CoffeeMachine --> CoffeeType : uses
+    CofeeMachine o-- Cofee : selected cofee
+    Cofee <|-- Capuchino
+    Cofee <|-- Expresso
+    Cofee <|-- Solo
 ```
