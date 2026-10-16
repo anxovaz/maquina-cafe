@@ -1,5 +1,8 @@
-enum class CoffeeType(val ingredients: Array<String>, val preparation: Array<String>) {
-    EXPRESO(arrayOf("Café","agua"), arrayOf("1. Calentar agua", "2. Preparar café", "3. Listo")),
-    CAPUCHINO(arrayOf("Café","agua", "leche"), arrayOf("1. Calentar agua y leche", "2. Preparar café", "3. Mezclar con Leche","4. Listo")),
-    SOLO(arrayOf("Café","agua"), arrayOf("1. Calentar agua", "2. Preparar café", "3. Listo")),
+enum class CoffeeType(val ingredients: Array<Boolean> = arrayOf(), val temperature:Int = 0) {
+    //Ingredients {water, milk, coffee}, temp: INT
+
+    EXPRESO(arrayOf(true, false, true), 50),
+    CAPUCHINO(arrayOf(true, true, true), 50),
+    ONLY(arrayOf(true, false, true), 60),
+    UNDEFINED, //user didnt indicate a coffeeType
 }
