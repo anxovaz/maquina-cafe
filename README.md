@@ -103,9 +103,9 @@ classDiagram
         CAPUCHINO
         ONLY
         UNDEFINED
-        +ingredients
-        +temperature
-        +percent
+        +ingredients: Boolean[]
+        +temperature: Int
+        +percent: Double[]
     }
 
     CoffeeMachine --> CoffeeType : uses
