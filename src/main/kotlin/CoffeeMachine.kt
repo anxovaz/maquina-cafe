@@ -10,12 +10,12 @@ object CoffeeMachine {
     //Machine Valves
     private var water: Boolean = false
     private var milk: Boolean = false
-    private var coffe: Boolean = false
+    private var coffee: Boolean = false
 
     //Machine resources perc
     private var waterPerc: Double = 0.0
     private var milkPerc: Double = 0.0
-    private var coffePerc: Double = 0.0
+    private var coffeePerc: Double = 0.0
 
     //coffe temperature
     private var temp: Int = 10
@@ -48,13 +48,13 @@ object CoffeeMachine {
                 }else{
                     this.water = coffeeType.ingredients[0]
                     this.milk = coffeeType.ingredients[1]
-                    this.coffe = coffeeType.ingredients[2]
+                    this.coffee = coffeeType.ingredients[2]
 
                     this.temp = coffeeType.temperature
 
                     this.waterPerc = coffeeType.perc[0]
                     this.milkPerc = coffeeType.perc[1]
-                    this.coffePerc = coffeeType.perc[2]
+                    this.coffeePerc = coffeeType.perc[2]
 
                     //Prepares the coffee
                     if(this.prepareCoffee()){
