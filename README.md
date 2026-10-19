@@ -6,7 +6,7 @@ selecciona un café y la máquina avanza por los estados de preparación y entre
 ```mermaid
 flowchart TD
     Idle["estado = Idle"] --> CargingMachine["estado = CargingMachine"]
-    CargingMachine --> CoinsCheck
+    ChargingMachine --> CoinsCheck
     CoinsCheck{"coins.wage() >= 0.60"}
     CoinsCheck -->|Sí| MakeCofee["estado = MakeCofee"]
     CoinsCheck -->|No| CargingMachine
@@ -102,8 +102,10 @@ classDiagram
         EXPRESO
         CAPUCHINO
         ONLY
-        +ingredients: String[]
-        +preparation: String[]
+        UNDEFINED
+        +ingredients
+        +temperature
+        +percent
     }
 
     CoffeeMachine --> CoffeeType : uses
