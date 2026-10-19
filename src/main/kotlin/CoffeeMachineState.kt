@@ -17,7 +17,7 @@ sealed class CoffeeMachineState {
     }
     data class Error(val message: String = "Error") : CoffeeMachineState(){
         fun enter(){
-            println("[LOG] entrando al estado Error")
+            println("[LOG] Error: ${message}")
         }
     }
     //El estado después de IDLE que le pide al usuario que introduzca monedas, cuando llega a 0.60 € pasa al siguiente

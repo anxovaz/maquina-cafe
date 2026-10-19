@@ -20,7 +20,7 @@ object CoffeeMachine {
     //coffe temperature
     private var temp: Int = 10
 
-    fun makeCoffee(wage: Int = 0, coffeeType: CoffeeType = CoffeeType.UNDEFINED) {
+    fun makeCoffee(wage: Int = 0, coffeeType: CoffeeType = CoffeeType.UNDEFINED): CoffeeMachineState {
         println("Estado actual: $currentState")
 
         when (currentState) {
@@ -43,7 +43,7 @@ object CoffeeMachine {
                 println("¡Espera! La máquina ya está haciendo café.")
 
                 if (coffeeType == CoffeeType.UNDEFINED) {
-                    println("Por favor especifica un café")
+                    Error("Por favor especifica un café").enter()
                     //current state doesnt change
                 }else{
                     this.water = coffeeType.ingredients[0]
@@ -107,22 +107,21 @@ object CoffeeMachine {
                 this.currentState = Idle()
             }
         }
+        return this.currentState;
     }
-    fun chargeMachine(money: Double) {
+    fun chargeMachine(money: Double): Double {
         this.wage += money
         this.makeCoffee()
+        return this.wage
     }
-    fun changCoffeTemp(): Boolean {
-        //This function activates the coffee machine's heater if the temperature recorded by the sensor is different from this.temp.
-        return true
-    }
-    fun prepareCoffee(): Boolean{
+    fun prepareCoffee(): Boolean {
         //Function that uses the water, milk, coffe and tem variables to acctionate the valves and sensors inside the coffee machine
         return true
     }
-    fun clean() {
+    fun clean(): Boolean {
         println("Limpiando la máquina...")
         currentState = CoffeeMachineState.Idle()
         println("Máquina limpia. Estado: $currentState")
+        return true
     }
 }
