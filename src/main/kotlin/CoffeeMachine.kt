@@ -88,9 +88,7 @@ object CoffeeMachine {
 
 
             is ReturnChange -> {
-                if(this.wage == 0.0){
-                    this.currentState = Idle()
-                }else{
+                if(this.wage != 0.0){
                     println("Aquí tiene su cambio, cantidad: " + String.format("%.2f", this.wage))
                     println("        .-----------------.\n" +
                             "      .'                   '.\n" +
@@ -101,8 +99,9 @@ object CoffeeMachine {
                             "     \\                       /\n" +
                             "      '.                   .'\n" +
                             "        '-----------------'")
-                    this.currentState = Idle()
+
                 }
+                this.currentState = Idle()
             }
 
         }
