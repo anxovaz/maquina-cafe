@@ -5,7 +5,7 @@ selecciona un café y la máquina avanza por los estados de preparación y entre
 
 ```mermaid
 flowchart TD
-    Idle["estado = Idle"] --> CargingMachine["estado = CargingMachine"]
+    Idle["estado = Idle"] --> ChargingMachine["estado = CargingMachine"]
     ChargingMachine --> CoinsCheck
     CoinsCheck{"coins.wage() >= 0.60"}
     CoinsCheck -->|Sí| MakeCofee["estado = MakeCofee"]
