@@ -12,6 +12,11 @@ object CoffeeMachine {
     private var milk: Boolean = false
     private var coffe: Boolean = false
 
+    //Machine resources perc
+    private var waterPerc: Double = 0.0
+    private var milkPerc: Double = 0.0
+    private var coffePerc: Double = 0.0
+
     //coffe temperature
     private var temp: Int = 10
 
@@ -33,7 +38,6 @@ object CoffeeMachine {
                 }else { //si ha metido más
                     this.currentState = MakingCoffee()
                 }
-
             }
             is MakingCoffee -> {
                 println("¡Espera! La máquina ya está haciendo café.")
@@ -48,6 +52,10 @@ object CoffeeMachine {
 
                     this.temp = coffeeType.temperature
 
+                    this.waterPerc = coffeeType.perc[0]
+                    this.milkPerc = coffeeType.perc[1]
+                    this.coffePerc = coffeeType.perc[2]
+
                     //Prepares the coffee
                     if(this.prepareCoffee()){
                         //If no errors during preparation
@@ -56,15 +64,12 @@ object CoffeeMachine {
                         //Errors during preparation
                         this.currentState = Error("Error durante la preparación del café, contacte con al siguiente número (+34) 000 00 00 00");
                     }
-
                 }
-
             }
             is Error -> {
                 println("La máquina tiene un error: ${(currentState as Error).message}")
                 this.currentState = ReturnChange() //it gives back the customer his money
             }
-
             is ServingCoffee -> {
                 //I decress wage by 0.60 (coffee price)
                 this.wage -= 0.60
@@ -85,8 +90,6 @@ object CoffeeMachine {
 
                 this.currentState = ReturnChange()
             }
-
-
             is ReturnChange -> {
                 if(this.wage != 0.0){
                     println("Aquí tiene su cambio, cantidad: " + String.format("%.2f", this.wage))
@@ -103,7 +106,6 @@ object CoffeeMachine {
                 }
                 this.currentState = Idle()
             }
-
         }
     }
     fun chargeMachine(money: Double) {
@@ -114,12 +116,10 @@ object CoffeeMachine {
         //This function activates the coffee machine's heater if the temperature recorded by the sensor is different from this.temp.
         return true
     }
-
     fun prepareCoffee(): Boolean{
         //Function that uses the water, milk, coffe and tem variables to acctionate the valves and sensors inside the coffee machine
         return true
     }
-
     fun clean() {
         println("Limpiando la máquina...")
         currentState = CoffeeMachineState.Idle()
