@@ -101,7 +101,7 @@ classDiagram
         <<enumeration>>
         EXPRESO
         CAPUCHINO
-        SOLO
+        ONLY
         +ingredients: String[]
         +preparation: String[]
     }
