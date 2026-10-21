@@ -29,13 +29,20 @@ class MainTest{
     fun test2(){
         CoffeeMachine.wage = 0.60
         CoffeeMachine.makeCoffee()
-        CoffeeMachine.makeCoffee()
+
         assertEquals(
             CoffeeMachineState.MakingCoffee(),
             CoffeeMachine.makeCoffee()
         )
+        println("---")
+        assertEquals(
+            CoffeeMachineState.ServingCoffee(),
+            CoffeeMachine.makeCoffee(CoffeeType.EXPRESO)
+        )
 
     }
+
+
 
     @AfterTest
     fun resetMachineAfterTest() {
