@@ -20,7 +20,7 @@ object CoffeeMachine {
     //coffe temperature
     private var temp: Int = 10
 
-    fun makeCoffee(wage: Int = 0, coffeeType: CoffeeType = CoffeeType.UNDEFINED): CoffeeMachineState {
+    fun makeCoffee(coffeeType: CoffeeType = CoffeeType.UNDEFINED): CoffeeMachineState {
         println("Estado actual: $currentState")
 
         when (currentState) {
@@ -34,7 +34,7 @@ object CoffeeMachine {
             is ChargingMachine -> {
                 if (this.wage < 0.60){ //Si el usuario ha metido menos de 60cents
                     println("Saldo insuficiente")
-                    currentState = ChargingMachine("Inserta monedas")
+                    currentState = ChargingMachine("Inserta monedas por favor")
                 }else { //si ha metido más
                     this.currentState = MakingCoffee()
                 }

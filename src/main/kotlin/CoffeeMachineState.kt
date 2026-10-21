@@ -1,5 +1,5 @@
 sealed class CoffeeMachineState {
-    class Idle(val waitingMessage: String = "") : CoffeeMachineState() { //no muestra mensaje si está en estado idle
+    data class Idle(val waitingMessage: String = "") : CoffeeMachineState() { //no muestra mensaje si está en estado idle
         fun enter(){
             println("[LOG] entrando al estado IDLE")
         }
