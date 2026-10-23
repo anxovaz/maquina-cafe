@@ -27,7 +27,7 @@ class MainTest{
 
     @Test
     fun test2(){
-        CoffeeMachine.wage = 0.60
+        CoffeeMachine.wage = 0.70
         CoffeeMachine.makeCoffee()
 
         assertEquals(
@@ -40,9 +40,29 @@ class MainTest{
             CoffeeMachine.makeCoffee(CoffeeType.EXPRESO)
         )
 
+        println("---")
+        assertEquals(
+            CoffeeMachineState.ReturnChange(),
+            CoffeeMachine.makeCoffee()
+        )
     }
 
+    @Test
+    fun test3() {
+        CoffeeMachine.chargeMachine(0.60)
+        CoffeeMachine.makeCoffee()
+        assertEquals(
+            CoffeeMachineState.Error("Por favor especifica un café"),
+            CoffeeMachine.makeCoffee()
+        )
 
+        println("---")
+
+        assertEquals(
+            CoffeeMachineState.ReturnChange(),
+            CoffeeMachine.makeCoffee()
+        )
+    }
 
     @AfterTest
     fun resetMachineAfterTest() {

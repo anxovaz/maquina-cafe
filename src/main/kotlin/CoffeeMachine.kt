@@ -43,7 +43,7 @@ object CoffeeMachine {
                 println("¡Espera! La máquina ya está haciendo café.")
 
                 if (coffeeType == CoffeeType.UNDEFINED) {
-                    Error("Por favor especifica un café").enter()
+                    this.currentState = Error("Por favor especifica un café")
                     //current state doesnt change
                 }else{
                     this.water = coffeeType.ingredients[0]
